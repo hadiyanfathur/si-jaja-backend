@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Constant\UserLevel;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -50,6 +51,13 @@ class LoginRequest extends FormRequest
 
             throw ValidationException::withMessages([
                 'email' => __('auth.failed'),
+            ]);
+        }
+
+        if(Auth::user()->level == UserLevel::SURVEYOR){
+            Auth::logout();
+            throw ValidationException::withMessages([
+                'email' => "User Only For Mobile Apps",
             ]);
         }
 
