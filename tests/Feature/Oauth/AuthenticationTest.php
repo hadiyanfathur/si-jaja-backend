@@ -13,25 +13,20 @@ class AuthenticationTest extends TestCase
 {
     public function test_users_can_authenticate()
     {
-
         $user = User::factory()->create();
+        
+        $client = Client::factory()->asPasswordClient()->create();
 
-        // $response = $this->postJson('/oauth/token', [
+        $response = $this->postJson('/oauth/token', [
+            'grant_type' => 'password',
+            'username' => $user->email,
+            'password' => 'password',
+            'client_id' => $client->id,
+            'client_secret' => $client->secret,
+            'scope' => '',
+        ]);  
 
-        // ]);
-
-        $user->dump();
+        $response->assertStatus(200);
     }
 
-    // public function test_users_can_be_retrieved()
-    // {
-    //     Passport::actingAs(
-    //         User::factory()->create(),
-    //         ['']
-    //     );
-
-    //     $response = $this->get('/api/user');
-
-    //     $response->assertStatus(200);
-    // }
 }
