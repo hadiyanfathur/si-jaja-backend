@@ -3,10 +3,7 @@
 namespace Tests\Feature\Oauth;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Laravel\Passport\Client;
-use Laravel\Passport\Passport;
 use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
