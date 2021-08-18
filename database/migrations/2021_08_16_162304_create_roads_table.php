@@ -20,6 +20,7 @@ class CreateRoadsTable extends Migration
             $table->foreignId('province_id')->constrained();
             $table->foreignId('city_id')->constrained();
             $table->foreignId('district_id')->constrained();
+            $table->decimal('budget', 20, 2);
             $table->timestamps();
         });
     }

@@ -13,16 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
-Route::get('/home', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', function () {
+        return view('dashboard');
+    });
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/home', function () {
+        return view('dashboard');
+    });
+
+    Route::resource('road', \App\Http\Controllers\RoadController::class)->only(['index', 'edit']);
+    Route::resource('road', \App\Http\Controllers\RoadController::class)->only(['create', 'update', 'store'])->middleware(['can:planner']);
+
+});
 
 require_once __DIR__.'/auth.php';

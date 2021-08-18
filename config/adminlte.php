@@ -247,6 +247,13 @@ return [
             'icon' => 'far fa-fw fa-file',
             'can'  => 'admin',
         ],
+        ['header' => 'ROAD MANAGEMENTS'],
+        [
+            'text' => 'Road',
+            'url'  => '/road',
+            'icon' => 'far fa-fw fa-file',
+            'active' => ['road*']
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

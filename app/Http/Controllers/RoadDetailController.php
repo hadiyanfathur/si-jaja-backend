@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Road;
+use App\Models\RoadDetail;
 use Illuminate\Http\Request;
 
-class RoadController extends Controller
+class RoadDetailController extends Controller
 {
-
-    public __construct(){
-
-    }
     /**
      * Display a listing of the resource.
      *
@@ -18,8 +14,7 @@ class RoadController extends Controller
      */
     public function index()
     {
-
-        return view('road.index');
+        //
     }
 
     /**
@@ -29,7 +24,7 @@ class RoadController extends Controller
      */
     public function create()
     {
-        return view('road.create');
+        //
     }
 
     /**
@@ -46,33 +41,33 @@ class RoadController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Road  $road
+     * @param  \App\Models\RoadDetail  $roadDetail
      * @return \Illuminate\Http\Response
      */
-    public function show(Road $road)
+    public function show(RoadDetail $roadDetail)
     {
-        return view('road.edit');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Road  $road
+     * @param  \App\Models\RoadDetail  $roadDetail
      * @return \Illuminate\Http\Response
      */
-    public function edit(Road $road)
+    public function edit(RoadDetail $roadDetail)
     {
-        return view('road.edit');
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Road  $road
+     * @param  \App\Models\RoadDetail  $roadDetail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Road $road)
+    public function update(Request $request, RoadDetail $roadDetail)
     {
         //
     }
@@ -80,10 +75,10 @@ class RoadController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Road  $road
+     * @param  \App\Models\RoadDetail  $roadDetail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Road $road)
+    public function destroy(RoadDetail $roadDetail)
     {
         //
     }
