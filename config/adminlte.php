@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'SI BANG JAJA',
     'title_prefix' => '',
     'title_postfix' => '',
 

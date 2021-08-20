@@ -21,6 +21,12 @@ class CreateRoadsTable extends Migration
             $table->foreignId('city_id')->constrained();
             $table->foreignId('district_id')->constrained();
             $table->decimal('budget', 20, 2);
+            $table->decimal('cost', 20, 2)->nullable();
+            $table->string('executor', 255)->nullable();
+            $table->string('executor_contact', 100)->nullable();
+            $table->date('start_at')->nullable();
+            $table->date('end_at')->nullable();
+            $table->string('supervisor')->nullable();
             $table->timestamps();
         });
     }

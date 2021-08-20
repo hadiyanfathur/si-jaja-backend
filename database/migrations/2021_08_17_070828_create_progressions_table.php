@@ -16,13 +16,13 @@ class CreateProgressionsTable extends Migration
         Schema::create('progressions', function (Blueprint $table) {
             $table->id();
             $table->decimal('length', 10, 2);
-            $table->string('uom_length', 50);
+            $table->string('uom_length', 50)->default('meter');
             $table->decimal('width', 10, 2);
-            $table->string('uom_width', 50);
-            $table->text('problem');
-            $table->string('problem_picture', 100);
+            $table->string('uom_width', 50)->default('meter');
+            $table->text('problem')->nullable();
+            $table->string('problem_picture', 100)->nullable();
             $table->string('status', 100);
-            $table->string('approval_status', 100);
+            $table->string('approval_status', 100)->default('approved');
             $table->foreignId('road_id')->constrained();
             $table->timestamps();
         });

@@ -8,10 +8,10 @@ class PavementType
     public const CONCRETE = 'concrete';
 
     public static $statusTexts = [
-        'aspalt' => 'Asplat',
+        'aspalt' => 'Aspalt',
         'concrete' => 'Concrete',
     ];
-    
+
     public static $indonesiaText = [
         'aspalt' => 'Aspal',
         'concrete' => 'Beton',

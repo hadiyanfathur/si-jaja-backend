@@ -24,7 +24,7 @@ class Road extends Model
 
     public function district(): BelongsTo
     {
-        return $this->belongsTo(Disctrict::class);
+        return $this->belongsTo(District::class);
     }
 
     public function progressions(): HasMany

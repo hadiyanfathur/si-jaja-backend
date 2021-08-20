@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Road;
 use Illuminate\Http\Request;
+use App\Services\RoadService;
 
 class RoadController extends Controller
 {
-
-    public __construct(){
-
+    public function __construct(RoadService $service)
+    {
+        $this->service = $service;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,8 +20,8 @@ class RoadController extends Controller
      */
     public function index()
     {
-
-        return view('road.index');
+        $data = $this->service->index();
+        return view('road.index', $data);
     }
 
     /**
@@ -29,7 +31,8 @@ class RoadController extends Controller
      */
     public function create()
     {
-        return view('road.create');
+        $data = $this->service->create();
+        return view('road.create', $data);
     }
 
     /**

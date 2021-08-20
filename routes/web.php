@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 
 
+
 Route::middleware(['auth'])->group(function () {
+
     Route::get('/', function () {
         return view('dashboard');
     });
@@ -31,6 +33,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('road', \App\Http\Controllers\RoadController::class)->only(['index', 'edit']);
     Route::resource('road', \App\Http\Controllers\RoadController::class)->only(['create', 'update', 'store'])->middleware(['can:planner']);
 
+    Route::get('/district/autocomplete', [\App\Http\Controllers\DistrictController::class, 'autocomplete']);
+    Route::get('/village/autocomplete', [\App\Http\Controllers\VillageController::class, 'autocomplete']);
+    Route::get('/city/autocomplete', [\App\Http\Controllers\CityController::class, 'autocomplete']);
+    Route::get('/province/autocomplete', [\App\Http\Controllers\ProvinceController::class, 'autocomplete']);
 });
 
-require_once __DIR__.'/auth.php';
+require __DIR__.'/auth.php';
