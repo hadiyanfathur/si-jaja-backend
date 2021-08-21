@@ -30,7 +30,7 @@ class AuthServiceProvider extends ServiceProvider
 
         if (! $this->app->routesAreCached()) {
             Passport::routes();
-            
+
             Passport::tokensExpireIn(now()->addDays(15));
             Passport::refreshTokensExpireIn(now()->addDays(30));
         }
@@ -47,6 +47,10 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('approver', function (User $user){
             return $user->level == UserLevel::APPROVER;
+        });
+
+        Gate::define('surveyor', function (User $user){
+            return $user->level == UserLevel::SURVEYOR;
         });
     }
 }

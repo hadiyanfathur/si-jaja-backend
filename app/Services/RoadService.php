@@ -2,23 +2,27 @@
 
 namespace App\Services;
 
+use App\Constant\ProgressionStatus;
 use App\Models\Road;
+use App\Repositories\Contracts\RoadRepositoryInterface;
 use App\Traits\HasDatatable;
 use Illuminate\Support\Facades\DB;
 
 class RoadService {
     use HasDatatable;
 
-    public function index()
+    private $roadRepository;
+
+    public function __construct(RoadRepositoryInterface $roadRepository)
     {
-        return null;
+        $this->roadRepository = $roadRepository;
     }
 
     public function store($request)
     {
         DB::transaction(function () use ($request) {
             $road = Road::create($request);
-            $road->progressions()->create(array_merge($request, ['status' => 'approved']));
+            $road->progressions()->create(array_merge($request, ['status' => ProgressionStatus::PLANNING]));
         });
 
         return true;
@@ -26,10 +30,9 @@ class RoadService {
 
     public function datatable()
     {
-        $query = Road::query();
-        $query->with(['province', 'city', 'district', 'village']);
+        $query = $this->roadRepository->withLatestProgression();
 
-        $datatable = $this->generate($query->get(), 'road', array('edit' => true));
+        $datatable = $this->generate($query->get(), 'roads', ['show' => true]);
 
         return $datatable->make(true);
     }

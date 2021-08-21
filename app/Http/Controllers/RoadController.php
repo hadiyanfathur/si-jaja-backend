@@ -44,7 +44,7 @@ class RoadController extends Controller
     public function store(RoadPlanningRequest $request)
     {
         $this->service->store($request->validated());
-        return redirect('/road')->with('success', 'Road has successfully created');
+        return redirect('/roads')->with('success', 'Road has successfully created');
     }
 
     /**

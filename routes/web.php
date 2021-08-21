@@ -30,11 +30,14 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard');
     });
 
-    Route::resource('road', \App\Http\Controllers\RoadController::class)->only(['index', 'edit']);
-    Route::resource('road', \App\Http\Controllers\RoadController::class)->only(['create', 'update', 'store'])->middleware('can:planner');
-
     require __DIR__.'/autocompletes.php';
     require __DIR__.'/datatables.php';
+
+    Route::resource('roads', \App\Http\Controllers\RoadController::class)->only(['create', 'store'])->middleware('can:planner');
+    Route::resource('roads', \App\Http\Controllers\RoadController::class)->only(['index', 'show', 'edit']);
+    Route::get('roads/{road}/progressions/create', [\App\Http\Controllers\ProgressionController::class, 'create'])->name('progressions.create');
+    Route::post('roads/{road}/progressions/create', [\App\Http\Controllers\ProgressionController::class, 'store'])->name('progressions.store');
+    Route::resource('progressions', \App\Http\Controllers\ProgressionController::class)->only(['index', 'show', 'edit']);
 });
 
 require __DIR__.'/auth.php';

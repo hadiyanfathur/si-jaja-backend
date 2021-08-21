@@ -11,4 +11,5 @@ use Illuminate\Support\Facades\Route;
 | Datatable is inside the middleware auth.
 */
 
-Route::get('road/datatable', [\App\Http\Controllers\RoadController::class, 'datatable']);
+Route::get('roads/datatable', [\App\Http\Controllers\RoadController::class, 'datatable']);
+Route::get('progressions/datatable', [\App\Http\Controllers\ProgressionController::class, 'datatable']);

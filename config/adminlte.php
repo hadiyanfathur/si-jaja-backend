@@ -241,20 +241,29 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],
+        ['header' => 'ROAD MANAGEMENTS'],
+        [
+            'text' => 'Road and Planning',
+            'url'  => '/roads',
+            'icon' => 'far fa-fw fa-file',
+            'active' => ['roads', 'regex:@^roads/[0-9]+$@', 'roads/create', 'roads/*/edit'],
+            'can'  => 'planner',
+        ],
+        [
+            'text' => 'Road Execution',
+            'url'  => '/progressions',
+            'icon' => 'far fa-fw fa-file',
+            'active' => ['*progressions*', 'progressions*'],
+            'can'  => 'surveyor',
+        ],
+        ['header' => 'SETTINGS'],
         [
             'text' => 'Register',
             'url'  => '/register',
             'icon' => 'far fa-fw fa-file',
             'can'  => 'admin',
         ],
-        ['header' => 'ROAD MANAGEMENTS'],
-        [
-            'text' => 'Road',
-            'url'  => '/road',
-            'icon' => 'far fa-fw fa-file',
-            'active' => ['road*']
-        ],
-        ['header' => 'account_settings'],
+        /*['header' => 'account_settings'],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
@@ -264,7 +273,7 @@ return [
             'text' => 'change_password',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
-        ],
+        ],*/
     ],
 
     /*

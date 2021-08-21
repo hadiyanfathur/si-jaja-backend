@@ -38,4 +38,9 @@ class Road extends Model
     {
         return $this->hasMany(Progression::class);
     }
+
+    public function latestProgression(): HasOne
+    {
+        return $this->hasOne(Progression::class)->latest();
+    }
 }

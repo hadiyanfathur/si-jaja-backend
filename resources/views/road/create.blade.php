@@ -4,7 +4,7 @@
     </x-slot>
 
     <div class="py-6">
-        <form method="POST" action="{{ route('road.store') }}">
+        <form method="POST" action="{{ route('roads.store') }}">
             <div class="flex flex-col sm:flex-row sm:space-x-4">
                 <div class="flex-1 bg-white overflow-hidden shadow-xl py-6 px-4 mt-2 sm:px-6 lg:px-8 sm:max-w-full sm:rounded-lg">
                     <x-auth-validation-errors class="mb-4" />
@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="mt-2">
-                        <x-label for="city" value="{{ __('CityRepository') }}" />
+                        <x-label for="city" value="{{ __('City') }}" />
                         <x-select id="city" class="block mt-1 w-full" name="city_id">
 
                         </x-select>

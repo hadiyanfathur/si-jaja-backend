@@ -54,12 +54,12 @@ class LoginRequest extends FormRequest
             ]);
         }
 
-        if(Auth::user()->level == UserLevel::SURVEYOR){
+       /* if(Auth::user()->level == UserLevel::SURVEYOR){
             Auth::logout();
             throw ValidationException::withMessages([
                 'email' => "User Only For Mobile Apps",
             ]);
-        }
+        }*/
 
         RateLimiter::clear($this->throttleKey());
     }
