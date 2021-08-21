@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RoadPlanningRequest;
 use App\Models\Road;
 use Illuminate\Http\Request;
 use App\Services\RoadService;
+use Yajra\DataTables\Contracts\DataTable;
 
 class RoadController extends Controller
 {
@@ -20,8 +22,7 @@ class RoadController extends Controller
      */
     public function index()
     {
-        $data = $this->service->index();
-        return view('road.index', $data);
+        return view('road.index');
     }
 
     /**
@@ -31,19 +32,19 @@ class RoadController extends Controller
      */
     public function create()
     {
-        $data = $this->service->create();
-        return view('road.create', $data);
+        return view('road.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\RoadPlanningRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoadPlanningRequest $request)
     {
-        //
+        $this->service->store($request->validated());
+        return redirect('/road')->with('success', 'Road has successfully created');
     }
 
     /**
@@ -89,5 +90,10 @@ class RoadController extends Controller
     public function destroy(Road $road)
     {
         //
+    }
+
+    public function datatable()
+    {
+        return $this->service->datatable();
     }
 }

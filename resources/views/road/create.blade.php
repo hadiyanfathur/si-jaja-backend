@@ -17,28 +17,28 @@
 
                     <div class="mt-2">
                         <x-label for="province" value="{{ __('Province') }}" />
-                        <x-select id="province" class="block mt-1 w-full" name="province">
+                        <x-select id="province" class="block mt-1 w-full" name="province_id">
 
                         </x-select>
                     </div>
 
                     <div class="mt-2">
                         <x-label for="city" value="{{ __('CityRepository') }}" />
-                        <x-select id="city" class="block mt-1 w-full" name="city">
+                        <x-select id="city" class="block mt-1 w-full" name="city_id">
 
                         </x-select>
                     </div>
 
                     <div class="mt-2">
                         <x-label for="district" value="{{ __('District') }}" />
-                        <x-select id="district" class="block mt-1 w-full" name="district">
+                        <x-select id="district" class="block mt-1 w-full" name="district_id">
 
                         </x-select>
                     </div>
 
                     <div class="mt-2">
                         <x-label for="village" value="{{ __('Village') }}" />
-                        <x-select id="village" class="block mt-1 w-full" name="village">
+                        <x-select id="village" class="block mt-1 w-full" name="village_id">
 
                         </x-select>
                     </div>
@@ -58,17 +58,17 @@
 
                     <h1 class="font-bold text-lg pb-2">&nbsp;</h1>
                     <div class="mt-2">
-                        <x-label for="road_width" value="{{ __('Road Width') }}" />
+                        <x-label for="width" value="{{ __('Road Width') }}" />
                         <div>
-                            <x-input id="road_width" class="inline-block mt-1 w-50" type="text" name="road_width" :value="old('road_width')" required autofocus autocomplete="road_width" />
+                            <x-input id="width" class="inline-block mt-1 w-50" type="text" name="width" :value="old('width')" required autofocus autocomplete="width" />
                             Meter
                         </div>
                     </div>
 
                     <div class="mt-2">
-                        <x-label for="road_length" value="{{ __('Road Length') }}" />
+                        <x-label for="length" value="{{ __('Road Length') }}" />
                         <div>
-                            <x-input id="road_length" class="inline-block mt-1 w-50" type="text" name="road_length" :value="old('road_length')" required autofocus autocomplete="road_length" />
+                            <x-input id="length" class="inline-block mt-1 w-50" type="text" name="length" :value="old('length')" required autofocus autocomplete="length" />
                             Meter
                         </div>
                     </div>
@@ -92,7 +92,8 @@
 <script>
     $('#village').select2({
         placeholder: "Choose Village...",
-        minimumInputLength: 2,
+        minimumInputLength: 1,
+        width: '100%',
         ajax: {
             delay: 350,
             url: '/village/autocomplete',
@@ -115,7 +116,6 @@
             },
             error: function (error) {
                 alert(error.responseJSON.message);
-                return { results: []}; // Return dataset to load after error
             },
             cache: true
         }
@@ -123,7 +123,8 @@
 
     $('#district').select2({
         placeholder: "Choose District...",
-        minimumInputLength: 2,
+        minimumInputLength: 1,
+        width: '100%',
         ajax: {
             delay: 350,
             url: '/district/autocomplete',
@@ -146,7 +147,6 @@
             },
             error: function (error) {
                 alert(error.responseJSON.message);
-                return { results: []}; // Return dataset to load after error
             },
             cache: true
         }
@@ -154,7 +154,8 @@
 
     $('#city').select2({
         placeholder: "Choose City...",
-        minimumInputLength: 2,
+        minimumInputLength: 1,
+        width: '100%',
         ajax: {
             delay: 350,
             url: '/city/autocomplete',
@@ -177,7 +178,6 @@
             },
             error: function (error) {
                 alert(error.responseJSON.message);
-                return { results: []}; // Return dataset to load after error
             },
             cache: true
         }
@@ -185,7 +185,8 @@
 
     $('#province').select2({
         placeholder: "Choose Province...",
-        minimumInputLength: 2,
+        minimumInputLength: 1,
+        width: '100%',
         ajax: {
             delay: 350,
             url: '/province/autocomplete',

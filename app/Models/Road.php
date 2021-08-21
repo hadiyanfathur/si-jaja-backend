@@ -12,9 +12,11 @@ class Road extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function province(): BelongsTo
     {
-        return $this->belongsTo(Privince::class);
+        return $this->belongsTo(Province::class);
     }
 
     public function city(): BelongsTo
@@ -27,13 +29,13 @@ class Road extends Model
         return $this->belongsTo(District::class);
     }
 
+    public function village(): BelongsTo
+    {
+        return $this->belongsTo(Village::class);
+    }
+
     public function progressions(): HasMany
     {
         return $this->hasMany(Progression::class);
-    }
-
-    public function detail(): HasOne
-    {
-        return $this->hasOne(RoadDetail::class);
     }
 }

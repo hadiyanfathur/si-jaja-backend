@@ -10,6 +10,8 @@ class Progression extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function road(): BelongsTo
     {
         return $this->belongsTo(Road::class);
