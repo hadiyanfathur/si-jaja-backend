@@ -34,7 +34,7 @@ class ProgressionService
     {
         $query = $this->roadRepository->withLatestProgression();
 
-        $query->where('start_at', 'is', 'null');
+        $query->where('start_at', '=', null);
 
         $datatable = $this->generate($query->get(), 'roads', null);
         $datatable->addColumn('execution', function ($model) {
