@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Constant\ProgressionStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -42,5 +43,15 @@ class Road extends Model
     public function latestProgression(): HasOne
     {
         return $this->hasOne(Progression::class)->latest();
+    }
+
+    public function planning() : HasOne
+    {
+        return $this->hasOne(Progression::class)->where('status', ProgressionStatus::PLANNING)->latest();
+    }
+
+    public function ongoing() : HasOne
+    {
+        return $this->hasOne(Progression::class)->where('status', ProgressionStatus::ONGOING)->latest();
     }
 }

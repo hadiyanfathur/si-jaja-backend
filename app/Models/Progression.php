@@ -16,4 +16,9 @@ class Progression extends Model
     {
         return $this->belongsTo(Road::class);
     }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }
