@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Constant\ProgressionStatus;
+use App\Http\Resources\RoadResource;
 use App\Models\Road;
 use App\Repositories\Contracts\RoadRepositoryInterface;
 use App\Traits\HasDatatable;
@@ -16,6 +17,13 @@ class RoadService {
     public function __construct(RoadRepositoryInterface $roadRepository)
     {
         $this->roadRepository = $roadRepository;
+    }
+
+    public function index($request)
+    {
+        $query = $this->roadRepository->findByStatus($request['status'] ?? null);
+
+        return RoadResource::collection($query->get());
     }
 
     public function store($request)
