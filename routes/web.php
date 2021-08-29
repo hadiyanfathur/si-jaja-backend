@@ -18,17 +18,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/', function () {
-        return view('dashboard');
-    });
+    Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [\App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
-    Route::get('/home', function () {
-        return view('dashboard');
-    });
+    Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index']);
 
     require __DIR__.'/autocompletes.php';
     require __DIR__.'/datatables.php';

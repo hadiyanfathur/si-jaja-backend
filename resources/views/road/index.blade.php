@@ -8,7 +8,9 @@
     <div class="py-12">
         <div class="bg-white overflow-hidden shadow-xl py-6 px-4 sm:px-6 lg:px-8">
             <div class="py-2">
-                <a href="{{ route('roads.create') }}"><span class="btn btn-primary text-light font-weight-bold">New Planning</span></a>
+                @can('planner')
+                    <a href="{{ route('roads.create') }}"><span class="btn btn-primary text-light font-weight-bold">New Planning</span></a>
+                @endcan
             </div>
             <div class="table-responsive">
                 <table class="table table-sm table-hover" id="dtable" width="100%" cellspacing="0">

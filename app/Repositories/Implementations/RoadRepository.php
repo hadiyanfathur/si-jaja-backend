@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Implementations;
 
+use App\Constant\ProgressionStatus;
 use App\Models\Progression;
 use App\Models\Road;
 use App\Repositories\Contracts\RoadRepositoryInterface;
@@ -38,8 +39,20 @@ class RoadRepository implements RoadRepositoryInterface
 
     public function isDoneWithName($name): Builder
     {
-        $query = $this->findByStatus('done');
+        $query = $this->findByStatus(ProgressionStatus::DONE);
         $query->where('name', 'like', '%'.$name.'%');
         return $query;
+    }
+
+    public function planningBudget()
+    {
+        $query = $this->findByStatus(ProgressionStatus::PLANNING);
+        return $query->sum('budget');
+    }
+
+    public function contractCost()
+    {
+        $query = $this->findByStatus(ProgressionStatus::ONGOING);
+        return $query->sum('cost');
     }
 }

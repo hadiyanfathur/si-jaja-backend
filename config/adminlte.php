@@ -247,7 +247,6 @@ return [
             'url'  => '/roads',
             'icon' => 'far fa-fw fa-file',
             'active' => ['roads', 'regex:@^roads/[0-9]+$@', 'roads/create', 'roads/*/edit'],
-            'can'  => 'planner',
         ],
         [
             'text' => 'Road Execution',
