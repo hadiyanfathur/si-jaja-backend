@@ -66,8 +66,8 @@ class ProgressionService
         $img = explode(',', $image);
         $img = str_replace(' ', '+', $img[1]);
         $data = base64_decode($img);
-        $name = 'image'.date("Y-m-d", strtotime(now())).'-'.Str::random(10).'.png';
-        Storage::put('public/images/'.$name, $data, 'public');
+        $name = 'images/image'.date("Y-m-d", strtotime(now())).'-'.Str::random(10).'.png';
+        Storage::put('public/'.$name, $data, 'public');
         return $name;
     }
 }
