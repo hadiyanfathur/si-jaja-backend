@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RoadExecutionRequest;
-use App\Models\Progression;
 use App\Models\Road;
 use App\Services\ProgressionService;
-use Illuminate\Http\Request;
 
 class ProgressionController extends Controller
 {
@@ -48,51 +46,6 @@ class ProgressionController extends Controller
         $this->service->store($request->validated(), $road);
 
         return redirect('/roads')->with('success', 'Road execution data has successfully saved');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Progression  $progression
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Progression $progression)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Progression  $progression
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Progression $progression)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Progression  $progression
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Progression $progression)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Progression  $progression
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Progression $progression)
-    {
-        //
     }
 
     public function datatable()

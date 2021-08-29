@@ -18,7 +18,7 @@ class RoadRepository implements RoadRepositoryInterface
         return $query;
     }
 
-    public function findByStatus($status)
+    public function findByStatus($status): Builder
     {
         $query = Road::query();
         $query->with(['province', 'city', 'district', 'village']);
@@ -33,6 +33,13 @@ class RoadRepository implements RoadRepositoryInterface
             }, $status);
         }
 
+        return $query;
+    }
+
+    public function isDoneWithName($name): Builder
+    {
+        $query = $this->findByStatus('done');
+        $query->where('name', 'like', '%'.$name.'%');
         return $query;
     }
 }

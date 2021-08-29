@@ -45,4 +45,11 @@ class RoadService {
         return $datatable->make(true);
     }
 
+    public function history($request)
+    {
+        $query = $this->roadRepository->isDoneWithName($request['name'] ?? null);
+
+        return RoadResource::collection($query->get());
+    }
+
 }
