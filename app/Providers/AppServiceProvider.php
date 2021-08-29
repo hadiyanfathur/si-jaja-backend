@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Helpers\Base64ValidationRule;
+use Dotenv\Validator;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\ServiceProvider;
 

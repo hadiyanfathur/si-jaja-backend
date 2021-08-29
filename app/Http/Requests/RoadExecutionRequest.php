@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\Base64Image;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RoadExecutionRequest extends FormRequest
@@ -32,6 +33,8 @@ class RoadExecutionRequest extends FormRequest
             'start_at' => ['required'],
             'end_at' => ['required'],
             'supervisor' => ['required'],
+            'images' => ['array'],
+            'images.*' => [new Base64Image]
         ];
     }
 }

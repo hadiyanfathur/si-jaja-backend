@@ -7,7 +7,10 @@ use App\Models\Progression;
 use App\Models\Road;
 use App\Repositories\Contracts\RoadRepositoryInterface;
 use App\Traits\HasDatatable;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProgressionService
 {
@@ -25,6 +28,19 @@ class ProgressionService
         DB::transaction(function () use ($request, $road) {
             $road->update($request);
             $road->progressions()->create(array_merge($request, ['status' => ProgressionStatus::ONGOING]));
+            if ($request['images'] != null)
+            {
+                $progression = Progression::findOrFail($road->latestProgression->id);
+                $progression->images()->createMany(
+                    collect($request['images'])->map(function($image, $key)
+                    {
+                        $path = $this->imageUpload($image);
+                        return [
+                            'path' => $path,
+                        ];
+                    })->toArray()
+                );
+            }
         });
 
         return true;
@@ -43,5 +59,15 @@ class ProgressionService
         });
 
         return $datatable->make(true);
+    }
+
+    public function imageUpload($image): string
+    {
+        $img = explode(',', $image);
+        $img = str_replace(' ', '+', $img[1]);
+        $data = base64_decode($img);
+        $name = 'image'.date("Y-m-d", strtotime(now())).'-'.Str::random(10).'.png';
+        Storage::put('public/images/'.$name, $data, 'public');
+        return $name;
     }
 }
