@@ -12,7 +12,7 @@ class ProgressionController extends Controller
 {
     public function create(RoadExecutionRequest $request, Road $road, ProgressionService $service)
     {
-        $data = $service->store($request->validated(), $road);
-;       return response()->success($data, 'Success add Execution data');
+        $service->store($request->validated(), $road);
+;       return response()->success(null, 'Success add Execution data');
     }
 }
