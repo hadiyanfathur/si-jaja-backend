@@ -10,9 +10,20 @@ use App\Services\ProgressionService;
 
 class ProgressionController extends Controller
 {
-    public function create(RoadExecutionRequest $request, Road $road, ProgressionService $service)
+    public function __construct(ProgressionService $service)
     {
-        $service->store($request->validated(), $road);
+        $this->service = $service;
+    }
+
+    public function create(RoadExecutionRequest $request, Road $road)
+    {
+        $this->service->store($request->validated(), $road);
 ;       return response()->success(null, 'Success add Execution data');
+    }
+
+    public function done(Road $road)
+    {
+        $this->service->done($road);
+        return response()->success(null, 'Success update Execution data');
     }
 }

@@ -46,6 +46,14 @@ class ProgressionService
         return true;
     }
 
+    public function done($road)
+    {
+        $progression = $road->latestProgression->replicate();
+        $progression->status = ProgressionStatus::DONE;
+        $progression->save();
+        return true;
+    }
+
     public function datatable()
     {
         $query = $this->roadRepository->withLatestProgression();
