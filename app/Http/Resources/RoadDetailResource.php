@@ -21,7 +21,7 @@ class RoadDetailResource extends JsonResource
             'status' => $this->latestProgression->status,
             'length' => (double) $this->planning->length,
             'width' => (double) $this->planning->width,
-            'budget' => (double) $this->planning->budget,
+            'budget' => (double) $this->budget,
             'execution' => $this->when($this->start_at != null, function () {
                 return [
                     'width' => (double) $this->ongoing->width,
