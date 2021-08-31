@@ -15,10 +15,10 @@ class DashboardService
     public function index()
     {
         return [
-            'budget' => $this->repository->planningBudget(),
-            'cost' => $this->repository->contractCost(),
-            'planning' => $this->repository->findByStatus(ProgressionStatus::PLANNING)->count(),
-            'ongoing' => $this->repository->findByStatus(ProgressionStatus::ONGOING)->count(),
+            'budget' => (double) $this->repository->planningBudget(),
+            'cost' => (double) $this->repository->contractCost(),
+            'planning' => (double) $this->repository->findByStatus(ProgressionStatus::PLANNING)->count(),
+            'ongoing' => (double) $this->repository->findByStatus(ProgressionStatus::ONGOING)->count(),
         ];
     }
 }
