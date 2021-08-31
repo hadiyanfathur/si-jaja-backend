@@ -20,6 +20,8 @@ class RoadDetailResource extends JsonResource
             'address' => $this->village->name.", ".$this->district->name.", ".$this->city->name.", ".$this->province->name,
             'status' => $this->latestProgression->status,
             'length' => $this->planning->length,
+            'width' => $this->planning->width,
+            'budget' => $this->planning->budget,
             'execution' => $this->when($this->start_at != null, function () {
                 return [
                     'width' => $this->ongoing->width,
