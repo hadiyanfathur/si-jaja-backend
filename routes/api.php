@@ -23,6 +23,7 @@ Route::middleware('auth:api')->group(function() {
     Route::get('roads/{road}', [\App\Http\Controllers\Api\RoadController::class, 'show'])->name('api.roads.show');
     Route::post('progressions/{road}', [\App\Http\Controllers\Api\ProgressionController::class, 'create']);
     Route::post('progressions/{road}/done', [\App\Http\Controllers\Api\ProgressionController::class, 'done']);
+    Route::post('progressions/{road}/upload', [\App\Http\Controllers\Api\ProgressionController::class, 'upload']);
     Route::get('histories', [\App\Http\Controllers\Api\HistoryController::class, 'index'])->name('api.history.index');
     Route::get('summaries', [\App\Http\Controllers\Api\DashboardController::class, 'index'])->name('api.summary.index');
 });

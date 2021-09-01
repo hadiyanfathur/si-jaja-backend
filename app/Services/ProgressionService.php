@@ -78,4 +78,20 @@ class ProgressionService
         Storage::put('public/'.$name, $data, 'public');
         return $name;
     }
+
+    public function upload($request, $road)
+    {
+        $progression = Progression::findOrFail($road->latestProgression->id);
+        $progression->images()->createMany(
+            collect($request['images'])->map(function($image, $key)
+            {
+                $path = $image->storeAs('images', 'image'.date("Y-m-d", strtotime(now())).'-'.Str::random(10).'.png', 'public');
+                return [
+                    'path' => $path,
+                ];
+            })->toArray()
+        );
+
+        return true;
+    }
 }
