@@ -28,7 +28,7 @@ class ProgressionService
         DB::transaction(function () use ($request, $road) {
             $road->update($request);
             $road->progressions()->create(array_merge($request, ['status' => ProgressionStatus::ONGOING]));
-            if ($request['images'] != null)
+            if (isset($request['images']))
             {
                 $progression = Progression::findOrFail($road->latestProgression->id);
                 $progression->images()->createMany(

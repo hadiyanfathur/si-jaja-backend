@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RoadPlanningRequest;
 use App\Models\Road;
-use Illuminate\Http\Request;
+use App\Services\ProgressionService;
 use App\Services\RoadService;
-use Yajra\DataTables\Contracts\DataTable;
+use Illuminate\Http\Request;
 
 class RoadController extends Controller
 {
@@ -95,5 +95,11 @@ class RoadController extends Controller
     public function datatable()
     {
         return $this->service->datatable();
+    }
+
+    public function done(Road $road, ProgressionService $progressionService)
+    {
+        $progressionService->done($road);
+        return redirect('/roads')->with('success', 'Road has been done');
     }
 }

@@ -72,7 +72,19 @@
             </div>
 
             @if(!empty($road->start_at))
+
                 <div class="flex-1 bg-white max-w-full overflow-hidden shadow-xl py-6 px-4 mt-2 sm:px-6 lg:px-8 md:w-50 sm:rounded-lg">
+                    @if($road->latestProgression->status == \App\Constant\ProgressionStatus::ONGOING)
+                        @can('surveyor')
+                            <div class="pb-5">
+                                <form method="POST" action="{{ route('progressions.done', ['road' => $road->id]) }}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary text-light font-weight-bold"><span >Done</span></button>
+                                </form>
+                            </div>
+                        @endcan
+                    @endif
+
 
                     <h1 class="font-bold text-lg pb-2">Road Execution</h1>
 
