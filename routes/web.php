@@ -27,8 +27,8 @@ Route::middleware(['auth'])->group(function () {
     require __DIR__.'/autocompletes.php';
     require __DIR__.'/datatables.php';
 
-    Route::resource('roads', \App\Http\Controllers\RoadController::class)->only(['create', 'store'])->middleware('can:planner');
-    Route::resource('roads', \App\Http\Controllers\RoadController::class)->only(['index', 'show', 'edit']);
+    Route::resource('roads', \App\Http\Controllers\RoadController::class)->only(['create', 'store', 'edit'])->middleware('can:planner');
+    Route::resource('roads', \App\Http\Controllers\RoadController::class)->only(['index', 'show']);
     Route::post('roads/{road}/done', [\App\Http\Controllers\RoadController::class, 'done'])->name('progressions.done');
     Route::get('roads/{road}/progressions/create', [\App\Http\Controllers\ProgressionController::class, 'create'])->name('progressions.create');
     Route::post('roads/{road}/progressions/create', [\App\Http\Controllers\ProgressionController::class, 'store'])->name('progressions.store');

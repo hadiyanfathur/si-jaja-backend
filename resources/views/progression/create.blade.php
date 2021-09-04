@@ -9,7 +9,7 @@
                 <div class="flex-1 bg-white overflow-hidden shadow-xl py-6 px-4 mt-2 sm:px-6 lg:px-8 sm:max-w-full sm:rounded-lg">
                     <x-auth-validation-errors class="mb-4" />
                     @csrf
-                    <h1 class="font-bold text-lg pb-2">Road Planning</h1>
+                    <h1 class="font-bold text-lg pb-2">{{ __("Road Planning")}}</h1>
                     <div class="mt-2">
                         <x-label for="name" value="{{ __('Road Name') }}" />
                         <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name') ?? $road->name" disabled autofocus autocomplete="name" />
@@ -74,7 +74,7 @@
 
                 <div class="flex-1 bg-white overflow-hidden shadow-xl mt-2 py-6 px-4 sm:px-6 lg:px-8 sm:max-w-full sm:rounded-lg">
 
-                    <h1 class="font-bold text-lg pb-2">Execution</h1>
+                    <h1 class="font-bold text-lg pb-2">{{ __("Execution")}}</h1>
 
                     <div class="mt-2">
                         <x-label for="width" value="{{ __('Road Width') }}" />

@@ -3,10 +3,12 @@
 namespace App\Services;
 
 use App\Constant\ProgressionStatus;
+use App\Constant\UserLevel;
 use App\Http\Resources\RoadResource;
 use App\Models\Road;
 use App\Repositories\Contracts\RoadRepositoryInterface;
 use App\Traits\HasDatatable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class RoadService {
@@ -40,7 +42,9 @@ class RoadService {
     {
         $query = $this->roadRepository->withLatestProgression();
 
-        $datatable = $this->generate($query->get(), 'roads', ['show' => true]);
+        $edit = Auth::user()->level == UserLevel::ADMINISTRATOR || Auth::user()->level == UserLevel::PLANNER;
+
+        $datatable = $this->generate($query->get(), 'roads', ['show' => true, 'edit' => $edit]);
 
         return $datatable->make(true);
     }

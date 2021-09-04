@@ -66,7 +66,7 @@ class RoadController extends Controller
      */
     public function edit(Road $road)
     {
-        return view('road.edit');
+        return view('road.edit', ['road' => $road]);
     }
 
     /**

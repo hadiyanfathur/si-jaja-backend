@@ -241,23 +241,23 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],*/
-        ['header' => 'ROAD MANAGEMENTS'],
+        ['header' => 'MANAJEMEN JALAN'],
         [
-            'text' => 'Road and Planning',
+            'text' => 'Jalan dan Perencanaan',
             'url'  => '/roads',
             'icon' => 'far fa-fw fa-file',
             'active' => ['roads', 'regex:@^roads/[0-9]+$@', 'roads/create', 'roads/*/edit'],
         ],
         [
-            'text' => 'Road Execution',
+            'text' => 'Jalan siap Kontrak',
             'url'  => '/progressions',
             'icon' => 'far fa-fw fa-file',
             'active' => ['*progressions*', 'progressions*'],
             'can'  => 'surveyor',
         ],
-        ['header' => 'SETTINGS'],
+        ['header' => 'PENGATURAN'],
         [
-            'text' => 'Register',
+            'text' => 'Registrasi',
             'url'  => '/register',
             'icon' => 'far fa-fw fa-file',
             'can'  => 'admin',

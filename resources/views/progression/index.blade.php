@@ -12,13 +12,13 @@
                 <table class="table table-sm table-hover" id="dtable" width="100%" cellspacing="0">
                     <thead class="thead-dark">
                     <tr>
-                        <th>Road Name</th>
-                        <th>Village</th>
-                        <th>District</th>
-                        <th>City</th>
-                        <th>Province</th>
-                        <th>Status</th>
-                        <th>Execution</th>
+                        <th>{{ __("Road Name") }}</th>
+                        <th>{{ __("Village") }}</th>
+                        <th>{{ __("District") }}</th>
+                        <th>{{ __("City") }}</th>
+                        <th>{{ __("Province") }}</th>
+                        <th>{{ __("Status") }}</th>
+                        <th>{{ __("Execution") }}</th>
                     </tr>
                     </thead>
                 </table>
