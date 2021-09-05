@@ -27,6 +27,9 @@ Route::middleware(['auth'])->group(function () {
     require __DIR__.'/autocompletes.php';
     require __DIR__.'/datatables.php';
 
+    Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
+    Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+    Route::put('profile/password', [\App\Http\Controllers\ProfileController::class, 'passwordUpdate'])->name('profile.updatepassword');
     Route::resource('roads', \App\Http\Controllers\RoadController::class)->only(['create', 'store', 'edit', 'update'])->middleware('can:planner');
     Route::resource('roads', \App\Http\Controllers\RoadController::class)->only(['index', 'show']);
     Route::post('roads/{road}/done', [\App\Http\Controllers\RoadController::class, 'done'])->name('progressions.done');
