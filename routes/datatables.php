@@ -13,3 +13,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('roads/datatable', [\App\Http\Controllers\RoadController::class, 'datatable']);
 Route::get('progressions/datatable', [\App\Http\Controllers\ProgressionController::class, 'datatable']);
+Route::get('users/datatable', [\App\Http\Controllers\UserController::class, 'datatable']);

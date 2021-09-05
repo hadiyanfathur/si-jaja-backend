@@ -54,6 +54,13 @@ class LoginRequest extends FormRequest
             ]);
         }
 
+        if(Auth::user()->active == 0) {
+            Auth::logout();
+            throw ValidationException::withMessages([
+                'email' => "User sudah tidak memiliki akses!",
+            ]);
+        }
+
        /* if(Auth::user()->level == UserLevel::SURVEYOR){
             Auth::logout();
             throw ValidationException::withMessages([

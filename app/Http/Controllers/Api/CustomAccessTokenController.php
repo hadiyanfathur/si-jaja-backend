@@ -24,6 +24,13 @@ class CustomAccessTokenController extends AccessTokenController
 
             $user = User::where('email', $requestBody['username'])->firstOrFail();
 
+            if ($user->active == 0)
+                return response()->json([
+                    "error" => "invalid_grant",
+                    "error_description" => "The user access is banned.",
+                    "message" => "The user access is banned.",
+                ], 400);
+
             if ($user->level != UserLevel::SURVEYOR && $user->level != UserLevel::ADMINISTRATOR)
                 return response()->json([
                     "error" => "invalid_grant",

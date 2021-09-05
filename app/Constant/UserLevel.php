@@ -6,13 +6,11 @@ class UserLevel
 {
     public const ADMINISTRATOR = 0;
     public const PLANNER = 1;
-    public const APPROVER = 10;
     public const SURVEYOR= 20;
 
     public static $statusTexts = [
         0 => 'Administrator',
         1 => 'Planner',
-        10 => 'Approver',
         20 => 'Surveyor',
     ];
 

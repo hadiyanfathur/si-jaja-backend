@@ -30,6 +30,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     Route::put('profile/password', [\App\Http\Controllers\ProfileController::class, 'passwordUpdate'])->name('profile.updatepassword');
+    Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+    Route::delete('users/{user}/block', [\App\Http\Controllers\UserController::class, 'block'])->name('users.block');
     Route::resource('roads', \App\Http\Controllers\RoadController::class)->only(['create', 'store', 'edit', 'update'])->middleware('can:planner');
     Route::resource('roads', \App\Http\Controllers\RoadController::class)->only(['index', 'show']);
     Route::post('roads/{road}/done', [\App\Http\Controllers\RoadController::class, 'done'])->name('progressions.done');

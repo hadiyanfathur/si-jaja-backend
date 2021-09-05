@@ -262,6 +262,12 @@ return [
             'icon' => 'far fa-fw fa-file',
             'can'  => 'admin',
         ],
+        [
+            'text' => 'User',
+            'url'  => '/users',
+            'icon' => 'far fa-fw fa-file',
+            'can'  => 'admin',
+        ],
         /*['header' => 'account_settings'],
         [
             'text' => 'profile',
