@@ -146,8 +146,32 @@
                         </div>
                     </div>
 
+                        <div class="mt-2">
+                            <x-label for="supervisor" value="{{ __('Problem') }}" />
+                            <div>
+                                <textarea id="problem" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 inline-block mt-1 w-full" type="text" name="supervisor" disabled>
+                                    {{ $road->problem }}
+                                </textarea>
+                            </div>
+                        </div>
+
                 </div>
             @endif
         </div>
+
+        @if(!empty($road->start_at))
+            <div class="flex flex-col md:flex-row sm:space-x-4">
+                <div class="flex-1 bg-white max-w-full overflow-hidden shadow-xl py-6 px-4 mt-2 sm:px-6 lg:px-8 md:w-50 sm:rounded-lg">
+                    <h1 class="font-bold text-lg pb-2">{{ __("Problem Images")}}</h1>
+                    <div class="mt-2">
+                        @foreach( $road->ongoing->images as $image )
+                            <img class="mt-2" src="{{ $image->path }}" />
+                        @endforeach
+                    </div>
+
+                </div>
+            </div>
+        @endif
+
     </div>
 </x-app-layout>
