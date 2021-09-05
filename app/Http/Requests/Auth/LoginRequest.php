@@ -30,7 +30,7 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|string|email:rfc,spoof',
+            'email' => 'required|string|email',
             'password' => 'required|string',
         ];
     }
