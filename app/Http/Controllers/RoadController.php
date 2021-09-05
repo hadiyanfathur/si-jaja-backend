@@ -44,7 +44,7 @@ class RoadController extends Controller
     public function store(RoadPlanningRequest $request)
     {
         $this->service->store($request->validated());
-        return redirect('/roads')->with('success', 'Road has successfully created');
+        return redirect('/roads')->with('success', 'Data Jalan Berhasil Dibuat');
     }
 
     /**
@@ -72,13 +72,14 @@ class RoadController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\RoadPlanningRequest  $request
      * @param  \App\Models\Road  $road
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Road $road)
+    public function update(RoadPlanningRequest $request, Road $road)
     {
-        //
+        $this->service->update($request->validated(), $road);
+        return redirect('/roads')->with('success', 'Data Jalan Berhasil Diubah');
     }
 
     /**
@@ -100,6 +101,6 @@ class RoadController extends Controller
     public function done(Road $road, ProgressionService $progressionService)
     {
         $progressionService->done($road);
-        return redirect('/roads')->with('success', 'Road has been done');
+        return redirect('/roads')->with('success', 'Jalan telah Diselesaikan');
     }
 }

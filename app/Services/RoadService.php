@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Constant\ProgressionStatus;
 use App\Constant\UserLevel;
 use App\Http\Resources\RoadResource;
+use App\Models\Progression;
 use App\Models\Road;
 use App\Repositories\Contracts\RoadRepositoryInterface;
 use App\Traits\HasDatatable;
@@ -33,6 +34,17 @@ class RoadService {
         DB::transaction(function () use ($request) {
             $road = Road::create($request);
             $road->progressions()->create(array_merge($request, ['status' => ProgressionStatus::PLANNING]));
+        });
+
+        return true;
+    }
+
+    public function update($request, $road)
+    {
+        DB::transaction(function () use ($request, $road) {
+            $road->update($request);
+            $progression = Progression::findOrFail($road->planning->id);
+            $progression->update(array_merge($request, ['status' => ProgressionStatus::PLANNING]));
         });
 
         return true;
