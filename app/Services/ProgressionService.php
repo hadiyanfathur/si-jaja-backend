@@ -43,7 +43,7 @@ class ProgressionService
             }
         });
 
-        return true;
+        return ['id' => $road->ongoing->id];
     }
 
     public function done($road)

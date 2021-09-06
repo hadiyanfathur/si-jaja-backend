@@ -17,8 +17,8 @@ class ProgressionController extends Controller
 
     public function create(RoadExecutionRequest $request, Road $road)
     {
-        $this->service->store($request->validated(), $road);
-;       return response()->success(null, 'Success add Execution data');
+        $data = $this->service->store($request->validated(), $road);
+;       return response()->success($data, 'Success add Execution data');
     }
 
     public function done(Road $road)
