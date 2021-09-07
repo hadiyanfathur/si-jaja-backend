@@ -81,7 +81,7 @@ class ProgressionService
 
     public function upload($request, $road)
     {
-        $progression = Progression::findOrFail($road->latestProgression->id);
+        $progression = Progression::findOrFail($road->ongoing->id);
         $progression->images()->createMany(
             collect($request['images'])->map(function($image, $key)
             {

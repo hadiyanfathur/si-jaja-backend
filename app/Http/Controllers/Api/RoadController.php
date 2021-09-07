@@ -25,6 +25,6 @@ class RoadController extends Controller
 
     public function show(Road $road)
     {
-        return response()->success(new RoadDetailResource($road), 'succest fetch data!');
+        return response()->success(new RoadDetailResource($road), 'success fetch data!');
     }
 }
