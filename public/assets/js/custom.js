@@ -59,3 +59,15 @@
     $(".alert").on("click", function() {
         $(this).hide();
     });
+
+    function showPassword(param) {
+        let form = param.parentElement.previousElementSibling;
+        let icon = param.firstElementChild;
+        if (form.type === "password") {
+            form.type = "text";
+            icon.className = "fa fa-eye";
+        } else {
+            form.type = "password";
+            icon.className = "fa fa-eye-slash";
+        }
+    }

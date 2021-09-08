@@ -47,6 +47,6 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        return redirect('/register');
+        return redirect('/register')->with('success', 'Berhasil Menambah Data User!');
     }
 }

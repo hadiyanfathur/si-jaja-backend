@@ -6,6 +6,7 @@
             </a>
         </x-slot>
 
+        <x-response-status />
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
@@ -29,20 +30,28 @@
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
+                <div class="input-group" id="show_hide_password">
+                    <x-input id="password" class="form-control"
+                                    type="password"
+                                    name="password"
+                             required autocomplete="new-password" />
+                    <div class="input-group-append">
+                        <button type="button" onclick="showPassword(this);" class="input-group-text"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
+                    </div>
+                </div>
             </div>
 
             <!-- Confirm Password -->
-            <div class="mt-4">
+            <div class="mt-4 form-group">
                 <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
+                <div class="input-group" id="show_hide_password2">
+                    <x-input id="password_confirmation" class="form-control"
+                                    type="password"
+                                    name="password_confirmation" required />
+                    <div class="input-group-append">
+                        <button type="button" onclick="showPassword(this);" class="input-group-text"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
+                    </div>
+                </div>
             </div>
 
             <div class="mt-4">
