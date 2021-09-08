@@ -33,6 +33,7 @@ class RoadExecutionRequest extends FormRequest
             'start_at' => ['required'],
             'end_at' => ['required'],
             'supervisor' => ['required'],
+            'problem' => ['string'],
             'images' => ['array'],
             'images.*' => [new Base64Image]
         ];
