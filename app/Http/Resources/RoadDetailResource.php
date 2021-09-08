@@ -32,6 +32,7 @@ class RoadDetailResource extends JsonResource
                     'supervisor' => $this->supervisor,
                     'start_at' => $this->start_at,
                     'end_at' => $this->end_at,
+                    'problem' => $this->problem,
                     'images' => ImagePathResource::collection($this->ongoing->images),
                 ];
             }),
