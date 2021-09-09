@@ -87,8 +87,13 @@
                     searchable: false,
                     render:function( data, type, row, meta ) {
                         let edit = document.querySelector(`#action-${row.id} .action-edit`);
-                        if(row.latest_progression.status != 'planning' && edit != null) {
-                            edit.remove();
+                        let destroy = document.querySelector(`#action-${row.id} .action-delete`);
+                        if(row.latest_progression.status != 'planning') {
+                            if(edit != null)
+                                edit.remove();
+
+                            if(destroy != null)
+                                destroy.remove();
                         }
                         return data;
                     }
