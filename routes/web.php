@@ -33,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
     Route::delete('users/{user}/block', [\App\Http\Controllers\UserController::class, 'block'])->name('users.block');
     Route::resource('roads', \App\Http\Controllers\RoadController::class)->only(['create', 'store', 'edit', 'update'])->middleware('can:planner');
+    Route::resource('roads', \App\Http\Controllers\RoadController::class)->only(['destroy'])->middleware('can:administrator');
     Route::resource('roads', \App\Http\Controllers\RoadController::class)->only(['index', 'show']);
     Route::post('roads/{road}/done', [\App\Http\Controllers\RoadController::class, 'done'])->name('progressions.done');
     Route::get('roads/{road}/progressions/create', [\App\Http\Controllers\ProgressionController::class, 'create'])->name('progressions.create');

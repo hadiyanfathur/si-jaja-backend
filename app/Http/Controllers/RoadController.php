@@ -90,7 +90,9 @@ class RoadController extends Controller
      */
     public function destroy(Road $road)
     {
-        //
+        $road->progressions()->delete();
+        $road->delete();
+        return redirect('/roads')->with('success', 'Data Jalan Berhasil di Hapus');
     }
 
     public function datatable()

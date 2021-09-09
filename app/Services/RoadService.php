@@ -56,7 +56,9 @@ class RoadService {
 
         $edit = Auth::user()->level == UserLevel::ADMINISTRATOR || Auth::user()->level == UserLevel::PLANNER;
 
-        $datatable = $this->generate($query->get(), 'roads', ['show' => true, 'edit' => $edit]);
+        $delete = Auth::user()->level == UserLevel::ADMINISTRATOR;
+
+        $datatable = $this->generate($query->get(), 'roads', ['show' => true, 'edit' => $edit, 'delete' => $delete]);
 
         return $datatable->make(true);
     }
