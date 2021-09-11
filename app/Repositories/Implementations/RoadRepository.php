@@ -55,4 +55,11 @@ class RoadRepository implements RoadRepositoryInterface
         $query = $this->findByStatus(ProgressionStatus::ONGOING);
         return $query->sum('cost');
     }
+
+
+    public function contractDoneCost()
+    {
+        $query = $this->findByStatus(ProgressionStatus::DONE);
+        return $query->sum('cost');
+    }
 }

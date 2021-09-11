@@ -9,4 +9,5 @@ interface RoadRepositoryInterface
     public function isDoneWithName($name);
     public function planningBudget();
     public function contractCost();
+    public function contractDoneCost();
 }

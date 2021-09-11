@@ -43,6 +43,20 @@
                     <h1>{{ $cost }}</h1>
                 </div>
             </div>
+            <div class="flex-1 bg-white max-w-full overflow-hidden shadow-xl py-6 px-4 mt-2 sm:px-6 lg:px-8 md:w-1/2 sm:rounded-lg">
+                <div class="text-center">
+                    Jumlah Data yang telah Selesai
+                </div>
+                <div class="text-center text-primary content-header">
+                    <h1>{{ $done }}</h1>
+                </div>
+                <div class="text-center">
+                    Jumlah Anggaran yang telah Selesai
+                </div>
+                <div class="text-center text-danger content-header">
+                    <h1>{{ $final_cost }}</h1>
+                </div>
+            </div>
         </div>
 
     </div>

@@ -17,8 +17,10 @@ class DashboardService
         return [
             'budget' => (double) $this->repository->planningBudget(),
             'cost' => (double) $this->repository->contractCost(),
+            'final_cost' => (double) $this->repository->contractDoneCost(),
             'planning' => (double) $this->repository->findByStatus(ProgressionStatus::PLANNING)->count(),
             'ongoing' => (double) $this->repository->findByStatus(ProgressionStatus::ONGOING)->count(),
+            'done' => (double) $this->repository->findByStatus(ProgressionStatus::DONE)->count(),
         ];
     }
 }
