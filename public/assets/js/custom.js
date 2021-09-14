@@ -60,6 +60,8 @@
         $(this).hide();
     });
 
+    $('.input-rupia').inputmask({alias: "currency", prefix: 'Rp. ', removeMaskOnSubmit: true});
+
     function showPassword(param) {
         let form = param.parentElement.previousElementSibling;
         let icon = param.firstElementChild;

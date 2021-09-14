@@ -70,7 +70,7 @@
 
                     <div class="mt-2">
                         <x-label for="budget" value="{{ __('Budget') }}" />
-                        <x-input id="budget" class="block mt-1 w-full" type="text" name="budget" :value="$road->budget" required autofocus autocomplete="budget" />
+                        <x-input id="budget" class="block mt-1 w-50 input-rupia" type="text" name="budget" :value="$road->budget" required autofocus autocomplete="budget" />
                     </div>
 
                     <div class="flex items-center justify-end mt-4">

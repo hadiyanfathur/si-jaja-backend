@@ -67,7 +67,7 @@
 
                 <div class="mt-2">
                     <x-label for="budget" value="{{ __('Budget') }}" />
-                    <x-input id="budget" class="block mt-1 w-full" type="text" name="budget" :value="$road->budget" disabled autofocus autocomplete="budget" />
+                    <x-input id="budget" class="block mt-1 w-50 input-rupia" type="text" name="budget" :value="$road->budget" disabled autofocus autocomplete="budget" />
                 </div>
             </div>
 
@@ -107,7 +107,7 @@
                     <div class="mt-2">
                         <x-label for="cost" value="{{ __('Contract Value') }}" />
                         <div>
-                            <x-input id="cost" class="inline-block mt-1 w-full" type="text" name="cost" :value="$road->cost" disabled autofocus autocomplete="cost" />
+                            <x-input id="cost" class="inline-block mt-1 w-50 input-rupia" type="text" name="cost" :value="$road->cost" disabled autofocus autocomplete="cost" />
                         </div>
                     </div>
 

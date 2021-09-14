@@ -95,7 +95,7 @@
                     <div class="mt-2">
                         <x-label for="cost" value="{{ __('Contract Value') }}" />
                         <div>
-                            <x-input id="cost" class="inline-block mt-1 w-full" type="text" name="cost" :value="old('cost')" required autofocus autocomplete="cost" />
+                            <x-input id="cost" class="inline-block mt-1 w-50 input-rupia" type="text" name="cost" :value="old('cost')" required autofocus autocomplete="cost" />
                         </div>
                     </div>
 

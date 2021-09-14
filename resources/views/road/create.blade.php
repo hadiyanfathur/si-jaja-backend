@@ -75,7 +75,7 @@
 
                     <div class="mt-2">
                         <x-label for="budget" value="{{ __('Budget') }}" />
-                        <x-input id="budget" class="block mt-1 w-full" type="text" name="budget" :value="old('budget')" required autofocus autocomplete="budget" />
+                        <x-input id="budget" class="block mt-1 w-50 input-rupia" type="text" name="budget" :value="old('budget')" required autofocus autocomplete="budget" />
                     </div>
 
                     <div class="flex items-center justify-end mt-4">
@@ -90,126 +90,128 @@
 </x-app-layout>
 
 <script>
-    $('#village').select2({
-        placeholder: "Choose Village...",
-        minimumInputLength: 1,
-        width: '100%',
-        ajax: {
-            delay: 350,
-            url: '/village/autocomplete',
-            dataType: 'json',
-            data: function (params) {
-                return {
-                    name: $.trim(params.term),
-                    district: document.getElementById('district').value,
-                };
-            },
-            processResults: function (data) {
-                return {
-                    results:  $.map(data, function (item) {
-                        return {
-                            text: item.name,
-                            id: item.id
-                        }
-                    })
-                };
-            },
-            error: function (error) {
-                alert(error.responseJSON.message);
-            },
-            cache: true
-        }
-    });
+    $(document).ready(function(){
+        $('#village').select2({
+            placeholder: "Choose Village...",
+            minimumInputLength: 1,
+            width: '100%',
+            ajax: {
+                delay: 350,
+                url: '/village/autocomplete',
+                dataType: 'json',
+                data: function (params) {
+                    return {
+                        name: $.trim(params.term),
+                        district: document.getElementById('district').value,
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results:  $.map(data, function (item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                error: function (error) {
+                    alert(error.responseJSON.message);
+                },
+                cache: true
+            }
+        });
 
-    $('#district').select2({
-        placeholder: "Choose District...",
-        minimumInputLength: 1,
-        width: '100%',
-        ajax: {
-            delay: 350,
-            url: '/district/autocomplete',
-            dataType: 'json',
-            data: function (params) {
-                return {
-                    name: $.trim(params.term),
-                    city: document.getElementById('city').value,
-                };
-            },
-            processResults: function (data) {
-                return {
-                    results:  $.map(data, function (item) {
-                        return {
-                            text: item.name,
-                            id: item.id
-                        }
-                    })
-                };
-            },
-            error: function (error) {
-                alert(error.responseJSON.message);
-            },
-            cache: true
-        }
-    });
+        $('#district').select2({
+            placeholder: "Choose District...",
+            minimumInputLength: 1,
+            width: '100%',
+            ajax: {
+                delay: 350,
+                url: '/district/autocomplete',
+                dataType: 'json',
+                data: function (params) {
+                    return {
+                        name: $.trim(params.term),
+                        city: document.getElementById('city').value,
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results:  $.map(data, function (item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                error: function (error) {
+                    alert(error.responseJSON.message);
+                },
+                cache: true
+            }
+        });
 
-    $('#city').select2({
-        placeholder: "Choose City...",
-        minimumInputLength: 1,
-        width: '100%',
-        ajax: {
-            delay: 350,
-            url: '/city/autocomplete',
-            dataType: 'json',
-            data: function (params) {
-                return {
-                    name: $.trim(params.term),
-                    province: document.getElementById('province').value,
-                };
-            },
-            processResults: function (data) {
-                return {
-                    results:  $.map(data, function (item) {
-                        return {
-                            text: item.name,
-                            id: item.id
-                        }
-                    })
-                };
-            },
-            error: function (error) {
-                alert(error.responseJSON.message);
-            },
-            cache: true
-        }
-    });
+        $('#city').select2({
+            placeholder: "Choose City...",
+            minimumInputLength: 1,
+            width: '100%',
+            ajax: {
+                delay: 350,
+                url: '/city/autocomplete',
+                dataType: 'json',
+                data: function (params) {
+                    return {
+                        name: $.trim(params.term),
+                        province: document.getElementById('province').value,
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results:  $.map(data, function (item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                error: function (error) {
+                    alert(error.responseJSON.message);
+                },
+                cache: true
+            }
+        });
 
-    $('#province').select2({
-        placeholder: "Choose Province...",
-        minimumInputLength: 1,
-        width: '100%',
-        ajax: {
-            delay: 350,
-            url: '/province/autocomplete',
-            dataType: 'json',
-            data: function (params) {
-                return {
-                    name: $.trim(params.term),
-                };
-            },
-            processResults: function (data) {
-                return {
-                    results:  $.map(data, function (item) {
-                        return {
-                            text: item.name,
-                            id: item.id
-                        }
-                    })
-                };
-            },
-            error: function (error) {
-                alert(error.responseJSON.message);
-            },
-            cache: true
-        }
+        $('#province').select2({
+            placeholder: "Choose Province...",
+            minimumInputLength: 1,
+            width: '100%',
+            ajax: {
+                delay: 350,
+                url: '/province/autocomplete',
+                dataType: 'json',
+                data: function (params) {
+                    return {
+                        name: $.trim(params.term),
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results:  $.map(data, function (item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                error: function (error) {
+                    alert(error.responseJSON.message);
+                },
+                cache: true
+            }
+        });
     });
 </script>
