@@ -17,7 +17,7 @@
         <div class="flex flex-col md:flex-row sm:space-x-2 mt-5">
             <div class="flex-1 bg-white max-w-full overflow-hidden shadow-xl py-6 px-4 mt-2 sm:px-6 lg:px-8 md:w-1/2 sm:rounded-lg">
                 <div class="text-center">
-                    Jumlah Perencanaan Pekerjaan
+                    Jumlah Data Perencanaan
                 </div>
                 <div class="text-center text-primary content-header">
                     <h1>{{ $planning }}</h1>
