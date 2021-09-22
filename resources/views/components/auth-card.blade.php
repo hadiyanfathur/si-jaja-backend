@@ -1,4 +1,4 @@
-<div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
+<div class="sm:w-1/2 w-full flex flex-col sm:justify-center items-center p-12 bg-gray-100 align-middle" style="background-image: url('{{asset('assets/img/bg.jpeg')}}'); background-size: 100% 100%;">
     <div>
         {{ $logo }}
     </div>
