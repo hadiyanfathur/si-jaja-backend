@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('roads/{road}/progressions/create', [\App\Http\Controllers\ProgressionController::class, 'create'])->name('progressions.create');
     Route::post('roads/{road}/progressions/create', [\App\Http\Controllers\ProgressionController::class, 'store'])->name('progressions.store');
     Route::resource('progressions', \App\Http\Controllers\ProgressionController::class)->only(['index', 'show', 'edit']);
+    Route::post('roads/export', [\App\Http\Controllers\RoadController::class, 'export'])->name('roads.export');
 });
 
 require __DIR__.'/auth.php';

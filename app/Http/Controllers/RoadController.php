@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\RoadsExport;
 use App\Http\Requests\RoadPlanningRequest;
 use App\Models\Road;
 use App\Services\ProgressionService;
 use App\Services\RoadService;
-use Illuminate\Http\Request;
 
 class RoadController extends Controller
 {
@@ -104,5 +104,10 @@ class RoadController extends Controller
     {
         $progressionService->done($road);
         return redirect('/roads')->with('success', 'Jalan telah Diselesaikan');
+    }
+
+    public function export(RoadsExport $export)
+    {
+        return $export;
     }
 }

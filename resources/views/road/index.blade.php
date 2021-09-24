@@ -11,6 +11,10 @@
                 @can('planner')
                     <a href="{{ route('roads.create') }}"><span class="btn btn-primary text-light font-weight-bold">{{ __('New Planning') }}</span></a>
                 @endcan
+                    <form action="{{ route('roads.export') }}" target="_blank" method="post" class="d-inline">
+                        @csrf
+                        <button class="btn btn-success text-light font-weight-bold" type="submit">{{ __('Roads Export') }}</button>
+                    </form>
             </div>
             <div class="table-responsive">
                 <table class="table table-sm table-hover" id="dtable" width="100%" cellspacing="0">
